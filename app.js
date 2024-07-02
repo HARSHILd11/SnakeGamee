@@ -45,13 +45,13 @@ const snakegame=mongoose.model("snakegame",snake);
 
 
 
-app.get("/snake",async(req,res)=>{
+app.get("/",async(req,res)=>{
     const highest=await snakegame.find({}).sort({score:-1}).limit(1);
     res.render("snake.ejs",{highest});
     console.log(highest[0].score)
 });
 
-app.post("/snake",async(req,res)=>{
+app.post("/",async(req,res)=>{
     const data=new snakegame(req.body)
     console.log(req.body);
 
